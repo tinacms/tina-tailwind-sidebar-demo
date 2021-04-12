@@ -1,15 +1,12 @@
 import * as React from "react";
 
 import { useCMS, withTina, useForm, usePlugin } from "tinacms";
-import { InlineForm, InlineBlocks } from "react-tinacms-inline";
-import { HeroBlock, hero_template } from "../components/hero";
-import {
-  TestimonialBlock,
-  testimonial_template,
-} from "../components/testimonial";
+import { Hero } from "../components/hero";
+import { Testimonial } from "../components/testimonial";
+import { Blocks } from "../components/blocks";
 import { Nav } from "../components/nav";
 import { Footer } from "../components/footer";
-import { FeaturesBlock, features_template } from "../components/features";
+import { Features } from "../components/features";
 import { TinaModal } from "../components/modal";
 import { Theme } from "../components/theme";
 import HomeData from "../data/home.json";
@@ -35,13 +32,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <InlineForm form={form}>
-        <Theme>
-          <Nav data={data.nav} />
-          <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
-          <Footer name={data.nav.wordmark.name} data={data.footer} />
-        </Theme>
-      </InlineForm>
+      <Theme>
+        <Nav data={data.nav} />
+        {data.blocks && <Blocks data={data.blocks} blocks={PAGE_BLOCKS} />}
+        <Footer name={data.nav.wordmark.name} data={data.footer} />
+      </Theme>
       {showModal && (
         <TinaModal
           data={data}
@@ -55,20 +50,11 @@ const App = () => {
 };
 
 const PAGE_BLOCKS = {
-  hero: {
-    Component: HeroBlock,
-    template: hero_template,
-  },
-  testimonial: {
-    Component: TestimonialBlock,
-    template: testimonial_template,
-  },
-  features: {
-    Component: FeaturesBlock,
-    template: features_template,
-  },
+  hero: Hero,
+  testimonial: Testimonial,
+  features: Features,
 };
 
-const tinaOptions = { enabled: true, sidebar: false, toolbar: true };
+const tinaOptions = { enabled: true, sidebar: true, toolbar: false };
 
 export default withTina(App, tinaOptions);

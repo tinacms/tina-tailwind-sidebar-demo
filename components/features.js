@@ -1,36 +1,26 @@
-import {
-  BlocksControls,
-  InlineTextarea,
-  InlineBlocks,
-} from "react-tinacms-inline";
 import { Icon, ICON_FIELDS } from "./icon";
 import { Actions, ACTION_FIELDS } from "./actions";
 import { Section, SectionFields } from "./section";
+import { Blocks } from "./blocks";
 
-export const FeatureBlock = ({ index, data }) => {
+export const Feature = (data) => {
   return (
     <div
       className="px-8 py-6 w-full xl:w-auto flex-grow xl:flex-shrink"
       style={{ flexBasis: "22rem" }}
     >
-      <BlocksControls
-        index={index}
-        focusRing={{ offset: 16 }}
-        insetControls={false}
-      >
-        <div className="max-w-lg">
-          <div className={`mb-6 w-auto inline-block`}>
-            <Icon icon={data.icon} />
-          </div>
-          <h3 className="mb-4 transition duration-150 ease-out text-2xl font-semibold title-font">
-            <InlineTextarea name="title" />
-          </h3>
-          <p className="mb-5 transition duration-150 ease-out text-base opacity-80 leading-relaxed">
-            <InlineTextarea name="text" />
-          </p>
-          <Actions actions={data.actions} />
+      <div className="max-w-lg">
+        <div className={`mb-6 w-auto inline-block`}>
+          <Icon icon={data.icon} />
         </div>
-      </BlocksControls>
+        <h3 className="mb-4 transition duration-150 ease-out text-2xl font-semibold title-font">
+          {data.title}
+        </h3>
+        <p className="mb-5 transition duration-150 ease-out text-base opacity-80 leading-relaxed">
+          {data.text}
+        </p>
+        <Actions actions={data.actions} />
+      </div>
     </div>
   );
 };
@@ -76,32 +66,17 @@ export const feature_template = {
   ],
 };
 
-export const Features = ({ data }) => {
+export const Features = (data) => {
   return (
     <Section variant={data.style.color}>
       <div className="container py-12 lg:py-24 mx-auto">
-        <InlineBlocks
-          direction="horizontal"
-          className="flex flex-wrap text-left"
-          name="items"
-          blocks={FEATURE_BLOCKS}
-        />
+        <div className="flex flex-wrap text-left">
+          <Blocks data={data.items} blocks={FEATURE_BLOCKS} />
+        </div>
       </div>
     </Section>
   );
 };
-
-export function FeaturesBlock(props) {
-  return (
-    <BlocksControls
-      index={props.index}
-      focusRing={{ offset: -12 }}
-      insetControls={true}
-    >
-      <Features data={props.data} />
-    </BlocksControls>
-  );
-}
 
 export const features_template = {
   label: "Features",
@@ -162,6 +137,9 @@ export const features_template = {
         ],
       },
     ],
+    style: {
+      color: "default",
+    },
   },
   fields: [
     {
@@ -185,8 +163,5 @@ export const features_template = {
 };
 
 const FEATURE_BLOCKS = {
-  feature: {
-    Component: FeatureBlock,
-    template: feature_template,
-  },
+  feature: Feature,
 };

@@ -1,8 +1,8 @@
 # Tina + Tailwind + Next.js Demo Project
 
-## An inline-editing demo built with [Tina](https://github.com/tinacms/tinacms), [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss), and [Next.js](https://github.com/vercel/next.js/).
+## A demo built with [Tina](https://github.com/tinacms/tinacms), [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss), and [Next.js](https://github.com/vercel/next.js/).
 
-- 🖋️ Edit text inline or in the settings modal for any block.
+- 🖋️ Edit everything through an easy to navigate sidebar
 - 🦉 Support for dark mode with a mode toggle in the navbar.
 - 📓 Use as a reference or jumping off point for your own projects.
 - 🖼️ Demo image [from Unsplash](https://unsplash.com/photos/3SfRHVfivdA)

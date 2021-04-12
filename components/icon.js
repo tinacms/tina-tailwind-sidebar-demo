@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ThemeContext } from "./theme";
-import { InlineGroup } from "react-tinacms-inline";
 import {
   BiCodeBlock,
   BiLike,
@@ -86,16 +85,7 @@ export const Icon = ({ icon }) => {
     }
   }, [icon.style, IconSVG, icon.color, theme.color]);
 
-  return (
-    <InlineGroup
-      name="icon"
-      focusRing={{ offset: 16 }}
-      insetControls={true}
-      fields={ICON_FIELDS[0].fields}
-    >
-      {Component}
-    </InlineGroup>
-  );
+  return Component;
 };
 
 export const ICON_FIELDS = [

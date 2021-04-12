@@ -1,11 +1,6 @@
 import * as React from "react";
 import { ThemeContext } from "./theme";
 import { Section, SectionFields } from "./section";
-import {
-  BlocksControls,
-  InlineText,
-  InlineTextarea,
-} from "react-tinacms-inline";
 
 export const Testimonial = ({ data }) => {
   const theme = React.useContext(ThemeContext);
@@ -21,9 +16,7 @@ export const Testimonial = ({ data }) => {
               >
                 &ldquo;
               </span>
-              <p className="relative opacity-95">
-                <InlineTextarea name="quote" />
-              </p>
+              <p className="relative opacity-95">{data.quoe}</p>
               <span
                 className={`block opacity-20 text-black text-${theme.color}-800 text-8xl absolute inset-y-1/2 transform translate-y-3	-right-4 leading-4 -z-1`}
               >
@@ -39,7 +32,7 @@ export const Testimonial = ({ data }) => {
               <p
                 className={`tracking-wide title-font font-bold text-base text-${theme.color}-300`}
               >
-                <InlineTextarea name="author" />
+                {data.author}
               </p>
             </footer>
           </blockquote>
@@ -48,18 +41,6 @@ export const Testimonial = ({ data }) => {
     </Section>
   );
 };
-
-export function TestimonialBlock({ data, index }) {
-  return (
-    <BlocksControls
-      index={index}
-      focusRing={{ offset: -12 }}
-      insetControls={true}
-    >
-      <Testimonial data={data} />
-    </BlocksControls>
-  );
-}
 
 export const testimonial_template = {
   label: "Testimonial",
