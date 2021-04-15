@@ -25,47 +25,6 @@ export const Feature = (data) => {
   );
 };
 
-export const feature_template = {
-  label: "Feature",
-  defaultItem: {
-    icon: {
-      color: "primary",
-      name: "",
-      style: "circle",
-    },
-    title: "Feature Heading Text",
-    text:
-      "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
-    actions: [
-      {
-        label: "Learn More",
-        type: "link",
-        icon: "true",
-      },
-    ],
-    style: {
-      color: "default",
-    },
-  },
-  itemProps: (item) => ({
-    label: item.title,
-  }),
-  fields: [
-    ...ICON_FIELDS,
-    {
-      name: "title",
-      label: "Title",
-      component: "text",
-    },
-    {
-      name: "text",
-      label: "Text",
-      component: "text",
-    },
-    ...ACTION_FIELDS,
-  ],
-};
-
 export const Features = (data) => {
   return (
     <Section variant={data.style.color}>
@@ -145,13 +104,44 @@ export const features_template = {
     {
       label: "Features",
       name: "items",
-      component: "blocks",
+      component: "group-list",
+      defaultItem: {
+        icon: {
+          color: "primary",
+          name: "",
+          style: "circle",
+        },
+        title: "Feature Heading Text",
+        text:
+          "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
+        actions: [
+          {
+            label: "Learn More",
+            type: "link",
+            icon: "true",
+          },
+        ],
+        style: {
+          color: "default",
+        },
+      },
       itemProps: (item) => ({
         label: item.title,
       }),
-      templates: {
-        feature: feature_template,
-      },
+      fields: [
+        ...ICON_FIELDS,
+        {
+          name: "title",
+          label: "Title",
+          component: "text",
+        },
+        {
+          name: "text",
+          label: "Text",
+          component: "text",
+        },
+        ...ACTION_FIELDS,
+      ],
     },
     {
       name: "style",
