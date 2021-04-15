@@ -22,6 +22,8 @@ export const Hero = (data) => {
                   className={`bg-clip-text text-transparent bg-gradient-to-r from-gray-600 to-gray-800`}
                   style={{
                     textShadow: `0 0.5rem 3rem rgba(var(--color-rgb-${theme.color}-600),0.35)`,
+                    boxDecorationBreak: "clone",
+                    WebkitBoxDecorationBreak: "clone",
                   }}
                 >
                   {data.headline}
@@ -31,6 +33,8 @@ export const Hero = (data) => {
                   className={`bg-clip-text text-transparent bg-gradient-to-r from-${theme.color}-400 to-${theme.color}-600`}
                   style={{
                     textShadow: `0 0.5rem 3rem rgba(var(--color-rgb-${theme.color}-600),0.35)`,
+                    boxDecorationBreak: "clone",
+                    WebkitBoxDecorationBreak: "clone",
                   }}
                 >
                   {data.headline}
