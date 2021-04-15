@@ -54,8 +54,18 @@ const App = () => {
       <Theme>
         <div className="min-h-screen flex flex-col">
           <Nav data={data.nav} />
-          <div className="flex-grow">
-            <Blocks data={data.blocks} blocks={PAGE_BLOCKS} />
+          <div className="flex-grow flex flex-col">
+            <Blocks
+              data={data.blocks}
+              blocks={PAGE_BLOCKS}
+              placeholder={
+                <div className="flex-grow flex items-center justify-center transition duration-150 ease-out text-gray-700 dark:text-gray-100 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 body-font overflow-hidden">
+                  <p className="opacity-30">
+                    There's nothing here, try adding some page sections.
+                  </p>
+                </div>
+              }
+            />
           </div>
           <Footer name={data.nav.wordmark.name} data={data.footer} />
         </div>
@@ -84,6 +94,10 @@ const PAGE_BLOCK_TEMPLATES = {
   features: features_template,
 };
 
-const tinaOptions = { enabled: true, sidebar: true, toolbar: false };
+const tinaOptions = {
+  enabled: true,
+  sidebar: true,
+  toolbar: false,
+};
 
 export default withTina(App, tinaOptions);
