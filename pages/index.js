@@ -52,9 +52,13 @@ const App = () => {
   return (
     <div className="App">
       <Theme>
-        <Nav data={data.nav} />
-        {data.blocks && <Blocks data={data.blocks} blocks={PAGE_BLOCKS} />}
-        <Footer name={data.nav.wordmark.name} data={data.footer} />
+        <div className="min-h-screen flex flex-col">
+          <Nav data={data.nav} />
+          <div className="flex-grow">
+            <Blocks data={data.blocks} blocks={PAGE_BLOCKS} />
+          </div>
+          <Footer name={data.nav.wordmark.name} data={data.footer} />
+        </div>
       </Theme>
       {showModal && (
         <TinaModal
