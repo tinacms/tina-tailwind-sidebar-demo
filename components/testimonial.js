@@ -25,12 +25,12 @@ export const Testimonial = (props) => {
             </div>
             <div className={`my-8 flex-grow-0`}>
               <span
-                className={`block mx-auto h-0.5 w-1/6 bg-${theme.color}-700 opacity-70`}
+                className={`block mx-auto h-0.5 w-1/6 bg-${theme.color}-300 dark:bg-${theme.color}-700 opacity-70`}
               ></span>
             </div>
             <footer className="text-center">
               <p
-                className={`tracking-wide title-font font-bold text-base text-${theme.color}-300`}
+                className={`tracking-wide title-font font-bold text-base text-${theme.color}-500 dark:text-${theme.color}-300`}
               >
                 {props.author}
               </p>
