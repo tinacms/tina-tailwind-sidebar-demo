@@ -2,11 +2,11 @@ import * as React from "react";
 import { ThemeContext } from "./theme";
 import { Section, SectionFields } from "./section";
 
-export const Testimonial = ({ data }) => {
+export const Testimonial = (props) => {
   const theme = React.useContext(ThemeContext);
 
   return (
-    <Section variant={data.style.color}>
+    <Section variant={props.style.color}>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="relative">
           <blockquote>
@@ -16,7 +16,7 @@ export const Testimonial = ({ data }) => {
               >
                 &ldquo;
               </span>
-              <p className="relative opacity-95">{data.quoe}</p>
+              <p className="relative opacity-95">{props.quote}</p>
               <span
                 className={`block opacity-20 text-black text-${theme.color}-800 text-8xl absolute inset-y-1/2 transform translate-y-3	-right-4 leading-4 -z-1`}
               >
@@ -32,7 +32,7 @@ export const Testimonial = ({ data }) => {
               <p
                 className={`tracking-wide title-font font-bold text-base text-${theme.color}-300`}
               >
-                {data.author}
+                {props.author}
               </p>
             </footer>
           </blockquote>
