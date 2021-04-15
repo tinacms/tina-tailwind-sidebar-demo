@@ -43,7 +43,7 @@ export const Nav = ({ data }) => {
               theme.toggleThemeMode();
             }}
             type="button"
-            className="ml-8 outline-none opacity-30 focus:opacity-100 focus:outline-none transparent absolute top-9 right-6  md:relative  md:top-auto  md:right-auto"
+            className="ml-8 outline-none opacity-30 hover:opacity-70 focus:opacity-100 focus:outline-none transparent absolute top-9 right-6  md:relative md:top-auto md:right-auto transition duration-150 ease-out"
             aria-pressed="false"
           >
             <BiSun
