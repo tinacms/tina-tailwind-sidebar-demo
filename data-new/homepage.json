@@ -2,9 +2,9 @@
   "nav": {
     "wordmark": {
       "icon": {
-        "color": "primary",
-        "name": "BiCodeBlock",
-        "style": "float"
+        "color": "green",
+        "name": "BiChat",
+        "style": "circle"
       },
       "name": "Logan"
     },
