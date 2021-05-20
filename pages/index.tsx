@@ -11,8 +11,14 @@ import { TinaModal } from "../components/modal";
 import { Theme } from "../components/theme";
 import HomeData from "../data/home.json";
 import { createClient } from "../utils";
+import { Homepage_Doc_Data } from "../.tina/__generated__/types";
 
-const App = () => {
+interface AppProps {
+  pageProps: {
+    getPageDocument: Homepage_Doc_Data;
+  };
+}
+const App = ({ pageProps }: AppProps) => {
   const cms = useCMS();
   cms.plugins.remove({
     __type: "screen",
@@ -137,7 +143,7 @@ export const getStaticProps = async (ctx) => {
   console.log({ data });
   return {
     props: {
-      data,
+      pageProps: data,
       query,
       variables: {},
     },

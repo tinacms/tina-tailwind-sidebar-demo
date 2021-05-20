@@ -3,10 +3,49 @@
     "wordmark": {
       "icon": {
         "color": "primary",
-        "style": "float"
+        "name": "BiBeer",
+        "style": "circle"
       },
       "name": "this is a test"
     }
   },
+  "blocks": [
+    {
+      "template": "features"
+    },
+    {
+      "template": "hero",
+      "actions": [
+        {
+          "label": "asdf",
+          "type": "link"
+        },
+        {
+          "label": "This is a test",
+          "type": "link"
+        },
+        {
+          "label": "This is a test",
+          "type": "button",
+          "icon": true
+        }
+      ]
+    },
+    {
+      "template": "hero"
+    }
+  ],
+  "navlist": [
+    {
+      "template": "nav",
+      "title": "asdf",
+      "items": [
+        {
+          "label": "asdf",
+          "link": "asdf"
+        }
+      ]
+    }
+  ],
   "_template": "homepage"
 }

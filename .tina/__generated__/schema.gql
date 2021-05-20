@@ -88,6 +88,7 @@ type Page_Document implements Node & Document {
 
 type NavWordmark_Icon_Data {
   color: String
+  name: String
   style: String
 }
 
@@ -96,17 +97,109 @@ type HomepageNav_Wordmark_Data {
   name: String
 }
 
+type HomepageNav_Items_Data {
+  label: String
+  link: String
+}
+
 type Homepage_Nav_Data {
   wordmark: HomepageNav_Wordmark_Data
+  items: [HomepageNav_Items_Data]
+}
+
+type Hero_Text_Data {
+  color: String
+}
+
+type Hero_Image_Data {
+  src: String
+  alt: String
+}
+
+type Hero_Actions_Data {
+  label: String
+  type: String
+  icon: Boolean
+}
+
+type Hero_Style_Data {
+  color: String
+}
+
+type Hero_Data {
+  text: Hero_Text_Data
+  image: Hero_Image_Data
+  actions: [Hero_Actions_Data]
+  style: Hero_Style_Data
+}
+
+type Testimonial_Style_Data {
+  color: String
+}
+
+type Testimonial_Data {
+  quote: String
+  author: String
+  style: Testimonial_Style_Data
+}
+
+type FeaturesItems_Icon_Data {
+  color: String
+  name: String
+  style: String
+}
+
+type Features_Items_Data {
+  icon: FeaturesItems_Icon_Data
+  title: String
+  text: String
+}
+
+type Features_Style_Data {
+  color: String
+}
+
+type Features_Data {
+  items: [Features_Items_Data]
+  style: Features_Style_Data
+}
+
+union Homepage_Blocks_Data = Hero_Data | Testimonial_Data | Features_Data
+
+type Nav_Items_Data {
+  label: String
+  link: String
+}
+
+type Nav_Data {
+  title: String
+  items: [Nav_Items_Data]
+}
+
+union Homepage_Navlist_Data = Nav_Data
+
+type HomepageFooter_Social_Data {
+  facebook: String
+  twitter: String
+  instagram: String
+  github: String
+}
+
+type Homepage_Footer_Data {
+  social: HomepageFooter_Social_Data
 }
 
 type Homepage_Doc_Data {
   nav: Homepage_Nav_Data
+  blocks: [Homepage_Blocks_Data]
+  navlist: [Homepage_Navlist_Data]
+  footer: Homepage_Footer_Data
   _body: String
 }
 
 type NavWordmark_Icon_Values {
   color: Reference
+  name: Reference
   style: Reference
 }
 
@@ -115,12 +208,107 @@ type HomepageNav_Wordmark_Values {
   name: String
 }
 
+type HomepageNav_Items_Values {
+  label: String
+  link: String
+}
+
 type Homepage_Nav_Values {
   wordmark: HomepageNav_Wordmark_Values
+  items: [HomepageNav_Items_Values]
+}
+
+type Hero_Text_Values {
+  color: Reference
+}
+
+type Hero_Image_Values {
+  src: String
+  alt: String
+}
+
+type Hero_Actions_Values {
+  label: String
+  type: Reference
+  icon: Boolean
+}
+
+type Hero_Style_Values {
+  color: Reference
+}
+
+type Hero_Values {
+  text: Hero_Text_Values
+  image: Hero_Image_Values
+  actions: [Hero_Actions_Values]
+  style: Hero_Style_Values
+  _template: String
+}
+
+type Testimonial_Style_Values {
+  color: Reference
+}
+
+type Testimonial_Values {
+  quote: String
+  author: String
+  style: Testimonial_Style_Values
+  _template: String
+}
+
+type FeaturesItems_Icon_Values {
+  color: Reference
+  name: Reference
+  style: Reference
+}
+
+type Features_Items_Values {
+  icon: FeaturesItems_Icon_Values
+  title: String
+  text: String
+}
+
+type Features_Style_Values {
+  color: Reference
+}
+
+type Features_Values {
+  items: [Features_Items_Values]
+  style: Features_Style_Values
+  _template: String
+}
+
+union Homepage_Blocks_Values = Hero_Values | Testimonial_Values | Features_Values
+
+type Nav_Items_Values {
+  label: String
+  link: String
+}
+
+type Nav_Values {
+  title: String
+  items: [Nav_Items_Values]
+  _template: String
+}
+
+union Homepage_Navlist_Values = Nav_Values
+
+type HomepageFooter_Social_Values {
+  facebook: String
+  twitter: String
+  instagram: String
+  github: String
+}
+
+type Homepage_Footer_Values {
+  social: HomepageFooter_Social_Values
 }
 
 type Homepage_Doc_Values {
   nav: Homepage_Nav_Values
+  blocks: [Homepage_Blocks_Values]
+  navlist: [Homepage_Navlist_Values]
+  footer: Homepage_Footer_Values
   _body: String
   _template: String
 }
@@ -156,7 +344,16 @@ type HomepageNav_Wordmark_GroupField implements FormField {
   fields: [HomepageNav_Wordmark_FormFieldsUnion]
 }
 
-union Homepage_Nav_FormFieldsUnion = HomepageNav_Wordmark_GroupField
+union HomepageNav_Items_FormFieldsUnion = TextField
+
+type HomepageNav_Items_GroupListField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [HomepageNav_Items_FormFieldsUnion]
+}
+
+union Homepage_Nav_FormFieldsUnion = HomepageNav_Wordmark_GroupField | HomepageNav_Items_GroupListField
 
 type Homepage_Nav_GroupField implements FormField {
   name: String
@@ -165,13 +362,174 @@ type Homepage_Nav_GroupField implements FormField {
   fields: [Homepage_Nav_FormFieldsUnion]
 }
 
+union Hero_Text_FormFieldsUnion = SelectField
+
+type Hero_Text_GroupField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Hero_Text_FormFieldsUnion]
+}
+
+union Hero_Image_FormFieldsUnion = TextField
+
+type Hero_Image_GroupField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Hero_Image_FormFieldsUnion]
+}
+
+type BooleanField implements FormField {
+  name: String
+  label: String
+  component: String
+}
+
+union Hero_Actions_FormFieldsUnion = TextField | SelectField | BooleanField
+
+type Hero_Actions_GroupListField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Hero_Actions_FormFieldsUnion]
+}
+
+union Hero_Style_FormFieldsUnion = SelectField
+
+type Hero_Style_GroupField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Hero_Style_FormFieldsUnion]
+}
+
+union Hero_FormFieldsUnion = Hero_Text_GroupField | Hero_Image_GroupField | Hero_Actions_GroupListField | Hero_Style_GroupField
+
+type Hero_Form {
+  label: String
+  name: String
+  fields: [Hero_FormFieldsUnion]
+}
+
 type TextareaField implements FormField {
   name: String
   label: String
   component: String
 }
 
-union Homepage_Doc_FormFieldsUnion = Homepage_Nav_GroupField | TextareaField
+union Testimonial_Style_FormFieldsUnion = SelectField
+
+type Testimonial_Style_GroupField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Testimonial_Style_FormFieldsUnion]
+}
+
+union Testimonial_FormFieldsUnion = TextareaField | TextField | Testimonial_Style_GroupField
+
+type Testimonial_Form {
+  label: String
+  name: String
+  fields: [Testimonial_FormFieldsUnion]
+}
+
+union FeaturesItems_Icon_FormFieldsUnion = SelectField
+
+type FeaturesItems_Icon_GroupField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [FeaturesItems_Icon_FormFieldsUnion]
+}
+
+union Features_Items_FormFieldsUnion = FeaturesItems_Icon_GroupField | TextField
+
+type Features_Items_GroupListField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Features_Items_FormFieldsUnion]
+}
+
+union Features_Style_FormFieldsUnion = SelectField
+
+type Features_Style_GroupField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Features_Style_FormFieldsUnion]
+}
+
+union Features_FormFieldsUnion = Features_Items_GroupListField | Features_Style_GroupField
+
+type Features_Form {
+  label: String
+  name: String
+  fields: [Features_FormFieldsUnion]
+}
+
+type Homepage_Blocks_BlocksFieldTemplates {
+  hero: Hero_Form
+  testimonial: Testimonial_Form
+  features: Features_Form
+}
+
+type Homepage_Blocks_BlocksField implements FormField {
+  name: String
+  label: String
+  component: String
+  templates: Homepage_Blocks_BlocksFieldTemplates
+}
+
+union Nav_Items_FormFieldsUnion = TextField
+
+type Nav_Items_GroupListField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Nav_Items_FormFieldsUnion]
+}
+
+union Nav_FormFieldsUnion = TextField | Nav_Items_GroupListField
+
+type Nav_Form {
+  label: String
+  name: String
+  fields: [Nav_FormFieldsUnion]
+}
+
+type Homepage_Navlist_BlocksFieldTemplates {
+  nav: Nav_Form
+}
+
+type Homepage_Navlist_BlocksField implements FormField {
+  name: String
+  label: String
+  component: String
+  templates: Homepage_Navlist_BlocksFieldTemplates
+}
+
+union HomepageFooter_Social_FormFieldsUnion = TextField
+
+type HomepageFooter_Social_GroupField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [HomepageFooter_Social_FormFieldsUnion]
+}
+
+union Homepage_Footer_FormFieldsUnion = HomepageFooter_Social_GroupField
+
+type Homepage_Footer_GroupField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Homepage_Footer_FormFieldsUnion]
+}
+
+union Homepage_Doc_FormFieldsUnion = Homepage_Nav_GroupField | Homepage_Blocks_BlocksField | Homepage_Navlist_BlocksField | Homepage_Footer_GroupField | TextareaField
 
 type Homepage_Doc_Form {
   label: String
@@ -181,6 +539,7 @@ type Homepage_Doc_Form {
 
 input NavWordmark_Icon_Input {
   color: String
+  name: String
   style: String
 }
 
@@ -189,12 +548,109 @@ input HomepageNav_Wordmark_Input {
   name: String
 }
 
+input HomepageNav_Items_Input {
+  label: String
+  link: String
+}
+
 input Homepage_Nav_Input {
   wordmark: HomepageNav_Wordmark_Input
+  items: [HomepageNav_Items_Input]
+}
+
+input Hero_Text_Input {
+  color: String
+}
+
+input Hero_Image_Input {
+  src: String
+  alt: String
+}
+
+input Hero_Actions_Input {
+  label: String
+  type: String
+  icon: Boolean
+}
+
+input Hero_Style_Input {
+  color: String
+}
+
+input Hero_Input {
+  text: Hero_Text_Input
+  image: Hero_Image_Input
+  actions: [Hero_Actions_Input]
+  style: Hero_Style_Input
+}
+
+input Testimonial_Style_Input {
+  color: String
+}
+
+input Testimonial_Input {
+  quote: String
+  author: String
+  style: Testimonial_Style_Input
+}
+
+input FeaturesItems_Icon_Input {
+  color: String
+  name: String
+  style: String
+}
+
+input Features_Items_Input {
+  icon: FeaturesItems_Icon_Input
+  title: String
+  text: String
+}
+
+input Features_Style_Input {
+  color: String
+}
+
+input Features_Input {
+  items: [Features_Items_Input]
+  style: Features_Style_Input
+}
+
+input Blocks_Input {
+  hero: Hero_Input
+  testimonial: Testimonial_Input
+  features: Features_Input
+}
+
+input Nav_Items_Input {
+  label: String
+  link: String
+}
+
+input Nav_Input {
+  title: String
+  items: [Nav_Items_Input]
+}
+
+input Navlist_Input {
+  nav: Nav_Input
+}
+
+input HomepageFooter_Social_Input {
+  facebook: String
+  twitter: String
+  instagram: String
+  github: String
+}
+
+input Homepage_Footer_Input {
+  social: HomepageFooter_Social_Input
 }
 
 input Homepage_Doc_Input {
   nav: Homepage_Nav_Input
+  blocks: [Blocks_Input]
+  navlist: [Navlist_Input]
+  footer: Homepage_Footer_Input
   _body: String
 }
 

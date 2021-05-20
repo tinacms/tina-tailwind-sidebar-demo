@@ -53,7 +53,7 @@ const Inner = (props) => {
         </>
       ) : (
         // pass the new edit state data to the child
-        props.children({ ...props, data: payload })
+        props.children({ ...props, pageProps: payload })
       )}
     </>
   );
