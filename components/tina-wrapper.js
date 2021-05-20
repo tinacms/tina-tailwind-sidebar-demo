@@ -19,11 +19,6 @@ const TinaWrapper = (props) => {
   }, []);
 
   /** Disables the TinaCMS "Media Manager" */
-  cms.plugins.all("screen").forEach((plugin) => {
-    if (plugin.name === "Media Manager") {
-      cms.plugins.remove(plugin);
-    }
-  });
 
   return (
     <TinaCloudAuthWall cms={cms}>

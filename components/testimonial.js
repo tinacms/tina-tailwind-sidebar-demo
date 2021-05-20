@@ -6,7 +6,7 @@ export const Testimonial = (props) => {
   const theme = React.useContext(ThemeContext);
 
   return (
-    <Section variant={props.style.color}>
+    <Section variant={props?.style?.color || "blue"}>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="relative">
           <blockquote>

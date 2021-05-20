@@ -3,36 +3,43 @@
     "wordmark": {
       "icon": {
         "color": "primary",
-        "name": "BiBeer",
-        "style": "circle"
+        "name": "BiCodeBlock",
+        "style": "float"
       },
-      "name": "this is a test"
-    }
+      "name": "Logan"
+    },
+    "items": [
+      {
+        "label": "test 2",
+        "link": "#"
+      },
+      {
+        "label": "Test",
+        "link": "#"
+      },
+      {
+        "label": "asdf",
+        "link": "#"
+      }
+    ]
   },
   "blocks": [
     {
-      "template": "features"
-    },
-    {
       "template": "hero",
+      "tagline": "chairs",
+      "headline": "Just a guy in a chair",
+      "paragraph": "Aliquam eu dapibus nisl. Suspendisse rhoncus nec nunc id blandit. Curabitur cursus ligula massa, non gravida sapien accumsan et. Ut lacus metus, aliquet eu nibh a, gravida convallis mauris. Duis et venenatis mi, sed vestibulum nisl. Sed aliquet, nunc et pharetra pellentesque, purus massa ultrices nisl, eu pellentesque felis nunc in lorem. ",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1617094876942-958b070179c5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=650&q=80",
+        "alt": "Dude on a chair"
+      },
       "actions": [
         {
-          "label": "asdf",
-          "type": "link"
-        },
-        {
-          "label": "This is a test",
-          "type": "link"
-        },
-        {
-          "label": "This is a test",
+          "label": "Change this",
           "type": "button",
           "icon": true
         }
       ]
-    },
-    {
-      "template": "hero"
     }
   ],
   "navlist": [

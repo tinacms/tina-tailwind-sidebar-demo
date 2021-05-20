@@ -114,6 +114,21 @@ export default defineSchema({
                   label: "Hero",
                   fields: [
                     {
+                      name: "tagline",
+                      label: "Tagline",
+                      type: "text",
+                    },
+                    {
+                      name: "headline",
+                      label: "Headline",
+                      type: "text",
+                    },
+                    {
+                      name: "paragraph",
+                      label: "Paragraph",
+                      type: "text",
+                    },
+                    {
                       name: "text",
                       label: "Text",
                       type: "group",

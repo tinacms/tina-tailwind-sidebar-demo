@@ -15,56 +15,25 @@ import { Homepage_Doc_Data } from "../.tina/__generated__/types";
 
 interface AppProps {
   pageProps: {
-    getPageDocument: Homepage_Doc_Data;
+    getPageDocument: { data: Homepage_Doc_Data };
   };
 }
 const App = ({ pageProps }: AppProps) => {
-  const cms = useCMS();
-  cms.plugins.remove({
-    __type: "screen",
-    name: "Media Manager",
+  console.log({
+    pageProps,
   });
-
-  const [showModal, setShowModal] = React.useState(false);
-
-  const [data, form] = useForm({
-    initialValues: HomeData,
-    fields: [
-      {
-        name: "nav",
-        label: "Navbar",
-        component: "group",
-        fields: NAV_FIELDS,
-      },
-      {
-        label: "Page Sections",
-        name: "blocks",
-        component: "blocks",
-        templates: PAGE_BLOCK_TEMPLATES,
-      },
-      {
-        name: "footer",
-        label: "Footer",
-        component: "group",
-        fields: FOOTER_FIELDS,
-      },
-    ],
-    onSubmit: (values) => {
-      setShowModal(true);
-    },
+  const { blocks, nav, footer, navlist } = pageProps.getPageDocument.data;
+  console.log({
+    blocks,
   });
-
-  usePlugin(form);
-
   return (
     <div className="App">
       <Theme>
         <div className="min-h-screen flex flex-col">
-          <Nav data={data.nav} />
+          <Nav nav={nav} />
           <div className="flex-grow flex flex-col">
             <Blocks
-              data={data.blocks}
-              blocks={PAGE_BLOCKS}
+              blocksData={blocks}
               placeholder={
                 <div className="flex-grow flex items-center justify-center transition duration-150 ease-out text-gray-700 dark:text-gray-100 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 body-font overflow-hidden">
                   <p className="opacity-30">
@@ -74,17 +43,17 @@ const App = ({ pageProps }: AppProps) => {
               }
             />
           </div>
-          <Footer name={data.nav.wordmark.name} data={data.footer} />
+          {/* <Footer name={data.nav.wordmark.name} data={data.footer} /> */}
         </div>
       </Theme>
-      {showModal && (
+      {/* {showModal && (
         <TinaModal
           data={data}
           close={() => {
             setShowModal(false);
           }}
-        />
-      )}
+        /> */}
+      {/* )} */}
     </div>
   );
 };
@@ -107,33 +76,73 @@ const client = createClient();
 
 export const query = `#graphql
  query ContentQuery {
-    getPageDocument(relativePath: "homepage.json"){
-      id
-      sys {
-        breadcrumbs
-        filename
-      }
-      data {
-        __typename ... on Homepage_Doc_Data {
-          nav {
-            __typename ... on Homepage_Nav_Data {
-              wordmark {
-                ... on HomepageNav_Wordmark_Data {
-                  icon {
-                    ... on NavWordmark_Icon_Data {
-                      color
-                      style
-                    }
+  getPageDocument(relativePath: "homepage.json") {
+    id
+    sys {
+      breadcrumbs
+      filename
+    }
+    data {
+      __typename
+      ... on Homepage_Doc_Data {
+        nav {
+          items {
+            label
+            link
+          }
+          __typename
+          ... on Homepage_Nav_Data {
+            wordmark {
+              ... on HomepageNav_Wordmark_Data {
+                icon {
+                  ... on NavWordmark_Icon_Data {
+                    color
+                    style
                   }
-                  name
                 }
+                name
               }
             }
+          }
+        }
+        blocks {
+          __typename
+          ... on Hero_Data {
+            text {
+              color
+            }
+            image {
+              src
+              alt
+            }
+            actions {
+              label
+              type
+              icon
+            }
+          }
+        }
+        navlist {
+          __typename ...on Nav_Data {
+            title 
+            items {
+              label
+              link
+            }
+          }
+        }
+        footer {
+          social {
+            facebook
+            twitter
+            instagram
+            github
           }
         }
       }
     }
   }
+}
 `;
 
 export const getStaticProps = async (ctx) => {

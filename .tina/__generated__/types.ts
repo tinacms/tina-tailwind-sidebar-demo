@@ -197,6 +197,9 @@ export type Hero_Style_Data = {
 
 export type Hero_Data = {
   __typename?: 'Hero_Data';
+  tagline?: Maybe<Scalars['String']>;
+  headline?: Maybe<Scalars['String']>;
+  paragraph?: Maybe<Scalars['String']>;
   text?: Maybe<Hero_Text_Data>;
   image?: Maybe<Hero_Image_Data>;
   actions?: Maybe<Array<Maybe<Hero_Actions_Data>>>;
@@ -328,6 +331,9 @@ export type Hero_Style_Values = {
 
 export type Hero_Values = {
   __typename?: 'Hero_Values';
+  tagline?: Maybe<Scalars['String']>;
+  headline?: Maybe<Scalars['String']>;
+  paragraph?: Maybe<Scalars['String']>;
   text?: Maybe<Hero_Text_Values>;
   image?: Maybe<Hero_Image_Values>;
   actions?: Maybe<Array<Maybe<Hero_Actions_Values>>>;
@@ -516,7 +522,7 @@ export type Hero_Style_GroupField = FormField & {
   fields?: Maybe<Array<Maybe<Hero_Style_FormFieldsUnion>>>;
 };
 
-export type Hero_FormFieldsUnion = Hero_Text_GroupField | Hero_Image_GroupField | Hero_Actions_GroupListField | Hero_Style_GroupField;
+export type Hero_FormFieldsUnion = TextField | Hero_Text_GroupField | Hero_Image_GroupField | Hero_Actions_GroupListField | Hero_Style_GroupField;
 
 export type Hero_Form = {
   __typename?: 'Hero_Form';
@@ -707,6 +713,9 @@ export type Hero_Style_Input = {
 };
 
 export type Hero_Input = {
+  tagline?: Maybe<Scalars['String']>;
+  headline?: Maybe<Scalars['String']>;
+  paragraph?: Maybe<Scalars['String']>;
   text?: Maybe<Hero_Text_Input>;
   image?: Maybe<Hero_Image_Input>;
   actions?: Maybe<Array<Maybe<Hero_Actions_Input>>>;

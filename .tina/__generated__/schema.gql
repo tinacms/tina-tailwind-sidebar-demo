@@ -127,6 +127,9 @@ type Hero_Style_Data {
 }
 
 type Hero_Data {
+  tagline: String
+  headline: String
+  paragraph: String
   text: Hero_Text_Data
   image: Hero_Image_Data
   actions: [Hero_Actions_Data]
@@ -238,6 +241,9 @@ type Hero_Style_Values {
 }
 
 type Hero_Values {
+  tagline: String
+  headline: String
+  paragraph: String
   text: Hero_Text_Values
   image: Hero_Image_Values
   actions: [Hero_Actions_Values]
@@ -404,7 +410,7 @@ type Hero_Style_GroupField implements FormField {
   fields: [Hero_Style_FormFieldsUnion]
 }
 
-union Hero_FormFieldsUnion = Hero_Text_GroupField | Hero_Image_GroupField | Hero_Actions_GroupListField | Hero_Style_GroupField
+union Hero_FormFieldsUnion = TextField | Hero_Text_GroupField | Hero_Image_GroupField | Hero_Actions_GroupListField | Hero_Style_GroupField
 
 type Hero_Form {
   label: String
@@ -578,6 +584,9 @@ input Hero_Style_Input {
 }
 
 input Hero_Input {
+  tagline: String
+  headline: String
+  paragraph: String
   text: Hero_Text_Input
   image: Hero_Image_Input
   actions: [Hero_Actions_Input]

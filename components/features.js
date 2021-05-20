@@ -27,10 +27,10 @@ export const Feature = (data) => {
 
 export const Features = (data) => {
   return (
-    <Section variant={data.style.color}>
+    <Section variant={data?.style?.color || "blue"}>
       <div className="container py-12 lg:py-24 mx-auto">
         <div className="flex flex-wrap text-left">
-          <Blocks data={data.items} blocks={FEATURE_BLOCKS} />
+          {/* <Blocks data={data.items} blocks={FEATURE_BLOCKS} /> */}
         </div>
       </div>
     </Section>
@@ -49,8 +49,7 @@ export const features_template = {
           style: "circle",
         },
         title: "Longer Information 1",
-        text:
-          "By eleven o'clock the next day we were well upon our way to the old English capital.",
+        text: "By eleven o'clock the next day we were well upon our way to the old English capital.",
         actions: [
           {
             label: "Learn More",
@@ -67,8 +66,7 @@ export const features_template = {
           style: "circle",
         },
         title: "Longer Information 2",
-        text:
-          "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
+        text: "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
         actions: [
           {
             label: "Learn More",
@@ -85,8 +83,7 @@ export const features_template = {
           style: "circle",
         },
         title: "Longer Information 3",
-        text:
-          "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
+        text: "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
         actions: [
           {
             label: "Learn More",
@@ -112,8 +109,7 @@ export const features_template = {
           style: "circle",
         },
         title: "Feature Heading Text",
-        text:
-          "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
+        text: "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
         actions: [
           {
             label: "Learn More",
