@@ -1,0 +1,44 @@
+---
+name: homepage
+label: Homepage
+fields:
+  - name: nav
+    type: field_group
+    label: Navbar
+    fields:
+      - label: Wordmark
+        name: wordmark
+        type: field_group
+        fields:
+          - label: Icon
+            name: icon
+            type: field_group
+            fields:
+              - name: color
+                label: Color
+                type: select
+                config:
+                  source:
+                    type: simple
+                  options:
+                    - primary
+                    - blue
+                    - teal
+                    - green
+                    - red
+                    - pink
+                    - purple
+                    - orange
+                    - yellow
+              - name: style
+                label: Style
+                type: select
+                config:
+                  source:
+                    type: simple
+                  options:
+                    - circle
+                    - float
+          - label: Name
+            name: name
+            type: text

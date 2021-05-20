@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "wordmark": {
+      "icon": {
+        "color": "primary",
+        "style": "float"
+      },
+      "name": "this is a test"
+    }
+  },
+  "_template": "homepage"
+}

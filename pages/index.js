@@ -10,6 +10,7 @@ import { Features, features_template } from "../components/features";
 import { TinaModal } from "../components/modal";
 import { Theme } from "../components/theme";
 import HomeData from "../data/home.json";
+import { createClient } from "../utils";
 
 const App = () => {
   const cms = useCMS();
@@ -94,10 +95,51 @@ const PAGE_BLOCK_TEMPLATES = {
   features: features_template,
 };
 
-const tinaOptions = {
-  enabled: true,
-  sidebar: true,
-  toolbar: false,
-};
+export default App;
 
-export default withTina(App, tinaOptions);
+const client = createClient();
+
+export const query = `#graphql
+ query ContentQuery {
+    getPageDocument(relativePath: "homepage.json"){
+      id
+      sys {
+        breadcrumbs
+        filename
+      }
+      data {
+        __typename ... on Homepage_Doc_Data {
+          nav {
+            __typename ... on Homepage_Nav_Data {
+              wordmark {
+                ... on HomepageNav_Wordmark_Data {
+                  icon {
+                    ... on NavWordmark_Icon_Data {
+                      color
+                      style
+                    }
+                  }
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const getStaticProps = async (ctx) => {
+  const data = await client.request(query, {
+    variables: {},
+  });
+  console.log({ data });
+  return {
+    props: {
+      data,
+      query,
+      variables: {},
+    },
+  };
+};
