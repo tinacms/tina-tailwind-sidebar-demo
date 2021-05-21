@@ -13,7 +13,7 @@ node_modules
 package.tgz
 
 .env
-.env*
+.env.local
 
 build
 builds/*

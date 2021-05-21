@@ -7,7 +7,6 @@ import { Nav, NAV_FIELDS } from "../components/nav";
 import { Footer, FOOTER_FIELDS } from "../components/footer";
 import { Features, features_template } from "../components/features";
 import { TinaModal } from "../components/modal";
-import { Theme } from "../components/theme";
 import { createClient } from "../utils";
 import { Homepage_Doc_Data } from "../.tina/__generated__/types";
 
@@ -26,28 +25,26 @@ const App = ({ pageProps }: AppProps) => {
   });
   return (
     <div className="App">
-      <Theme>
-        <div className="min-h-screen flex flex-col">
-          <Nav nav={nav} />
-          <div className="flex-grow flex flex-col">
-            <Blocks
-              blocksData={blocks}
-              placeholder={
-                <div className="flex-grow flex items-center justify-center transition duration-150 ease-out text-gray-700 dark:text-gray-100 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 body-font overflow-hidden">
-                  <p className="opacity-30">
-                    There's nothing here, try adding some page sections.
-                  </p>
-                </div>
-              }
-            />
-          </div>
-          <Footer
-            name={nav?.wordmark?.name || ""}
-            footer={footer}
-            navList={navlist}
+      <div className="min-h-screen flex flex-col">
+        <Nav nav={nav} />
+        <div className="flex-grow flex flex-col">
+          <Blocks
+            blocksData={blocks}
+            placeholder={
+              <div className="flex-grow flex items-center justify-center transition duration-150 ease-out text-gray-700 dark:text-gray-100 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 body-font overflow-hidden">
+                <p className="opacity-30">
+                  There's nothing here, try adding some page sections.
+                </p>
+              </div>
+            }
           />
         </div>
-      </Theme>
+        <Footer
+          name={nav?.wordmark?.name || ""}
+          footer={footer}
+          navList={navlist}
+        />
+      </div>
       {/* {showModal && (
         <TinaModal
           data={data}
