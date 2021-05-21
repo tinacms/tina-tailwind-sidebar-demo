@@ -49,7 +49,7 @@ export default defineSchema({
                           type: "select",
                           options: [
                             "random",
-                            "Aperture",
+                            "FiAperture",
                             "BiCodeBlock",
                             "BiLike",
                             "BiMapAlt",

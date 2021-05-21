@@ -38,7 +38,7 @@ fields:
                     type: simple
                   options:
                     - random
-                    - Aperture
+                    - FiAperture
                     - BiCodeBlock
                     - BiLike
                     - BiMapAlt

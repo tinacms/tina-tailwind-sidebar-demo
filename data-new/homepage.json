@@ -2,53 +2,56 @@
   "nav": {
     "wordmark": {
       "icon": {
-        "color": "green",
-        "name": "BiChat",
-        "style": "circle"
+        "color": "primary",
+        "name": "FiAperture",
+        "style": "float"
       },
-      "name": "Logan"
+      "name": "Company Name"
     },
     "items": [
       {
-        "label": "test 2",
-        "link": "#"
+        "label": "Pricing"
       },
       {
-        "label": "Test",
-        "link": "#"
+        "label": "Contact"
       },
       {
-        "label": "asdf",
-        "link": "#"
+        "label": "Services"
       }
     ]
   },
   "blocks": [
     {
       "template": "hero",
-      "tagline": "chairs",
-      "headline": "Just a guy in a chair",
+      "tagline": "TAGLINE ABOVE TEXT",
+      "headline": "This is a large display heading.",
       "paragraph": "Aliquam eu dapibus nisl. Suspendisse rhoncus nec nunc id blandit. Curabitur cursus ligula massa, non gravida sapien accumsan et. Ut lacus metus, aliquet eu nibh a, gravida convallis mauris. Duis et venenatis mi, sed vestibulum nisl. Sed aliquet, nunc et pharetra pellentesque, purus massa ultrices nisl, eu pellentesque felis nunc in lorem. ",
+      "text": {
+        "color": "default"
+      },
       "image": {
-        "src": "https://images.unsplash.com/photo-1617094876942-958b070179c5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=650&q=80",
-        "alt": "Dude on a chair"
+        "src": "https://images.unsplash.com/photo-1599979724544-fc7b5c69f029?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "alt": "Photo from Unsplash"
       },
       "actions": [
         {
-          "label": "Test",
-          "type": "button"
-        },
-        {
-          "label": "Change this",
+          "label": "Primary Action",
           "type": "button",
           "icon": true
+        },
+        {
+          "label": "Learn More",
+          "type": "button"
         }
-      ]
+      ],
+      "style": {
+        "color": "tint"
+      }
     },
     {
       "template": "testimonial",
-      "quote": "This is neat",
-      "author": "Somebuddy that I used to know",
+      "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula nunc diam. Nunc ut eros blandit, tristique tortor sit amet, elementum du",
+      "author": "Stone, John",
       "style": {
         "color": "primary"
       }
@@ -58,32 +61,51 @@
       "items": [
         {
           "icon": {
-            "color": "primary",
-            "name": "BiTestTube",
+            "color": "red",
+            "name": "BiCoffeeTogo",
             "style": "float"
           },
-          "title": "Testing",
-          "text": "This is a test",
+          "title": "Amazing Feature",
+          "text": "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
           "actions": [
             {
-              "label": "Thing one",
-              "type": "button"
-            },
-            {
-              "label": "Thing two",
-              "type": "button",
+              "label": "Learn More",
+              "type": "link",
               "icon": true
             }
           ]
         },
         {
           "icon": {
-            "color": "blue",
+            "color": "primary",
+            "name": "BiCloud",
+            "style": "circle"
+          },
+          "title": "Another Great Thing",
+          "text": "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
+          "actions": [
+            {
+              "label": "Learn More",
+              "type": "link",
+              "icon": true
+            }
+          ]
+        },
+        {
+          "icon": {
+            "color": "yellow",
             "name": "BiMapAlt",
             "style": "circle"
           },
-          "title": "This is a test",
-          "text": "This is a test"
+          "title": "Three To Round It Out",
+          "text": "Connect to any data source, edit with Tina. Designed for the Jamstack with a focus on React-based sites. ",
+          "actions": [
+            {
+              "label": "Learn More",
+              "type": "link",
+              "icon": true
+            }
+          ]
         }
       ]
     }

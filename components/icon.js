@@ -46,17 +46,18 @@ const iconOptions = {
 
 export const Icon = ({ icon }) => {
   const theme = React.useContext(ThemeContext);
-  const iconSize = icon.size ? (icon.size === "large" ? 14 : 9) : 14;
+  const iconSize = icon?.size ? (icon.size === "large" ? 14 : 9) : 14;
 
   const IconSVG = React.useMemo(() => {
-    return icon.name ? iconOptions[icon.name] : randomProperty(iconOptions);
-  }, [icon.name]);
+    return icon?.name ? iconOptions[icon?.name] : randomProperty(iconOptions);
+  }, [icon?.name]);
 
   const Component = React.useMemo(() => {
-    const iconColor = icon.color === "primary" ? theme.color : icon.color;
+    const iconColor =
+      icon?.color === "primary" ? theme.color : icon?.color || "blue";
 
     if (!IconSVG) return null;
-    if (icon.style == "circle") {
+    if (icon?.style == "circle") {
       return (
         <div
           className={`relative z-10 inline-flex items-center justify-center flex-shrink-0 w-${iconSize} h-${iconSize} bg-${iconColor}-400 dark:bg-${iconColor}-500 text-${iconColor}-50 rounded-full`}
@@ -83,7 +84,7 @@ export const Icon = ({ icon }) => {
         />
       );
     }
-  }, [icon.style, IconSVG, icon.color, theme.color]);
+  }, [icon?.style, IconSVG, icon?.color, theme.color]);
 
   return Component;
 };
