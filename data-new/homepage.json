@@ -41,7 +41,8 @@
         },
         {
           "label": "Learn More",
-          "type": "button"
+          "type": "link",
+          "icon": false
         }
       ],
       "style": {
@@ -113,11 +114,62 @@
   "navlist": [
     {
       "template": "nav",
-      "title": "asdf",
+      "title": "Company",
       "items": [
         {
-          "label": "asdf",
-          "link": "asdf"
+          "label": "About"
+        },
+        {
+          "label": "Carriers"
+        },
+        {
+          "label": "Pricing"
+        },
+        {
+          "label": "Security"
+        },
+        {
+          "label": "Contact us"
+        }
+      ]
+    },
+    {
+      "template": "nav",
+      "title": "Legal",
+      "items": [
+        {
+          "label": "Privacy Policy"
+        },
+        {
+          "label": "Terms Of Service"
+        },
+        {
+          "label": "Trademark Policy"
+        },
+        {
+          "label": "Inactive Policy"
+        }
+      ]
+    },
+    {
+      "template": "nav",
+      "title": "Product",
+      "items": [
+        {
+          "label": "Form Templates",
+          "link": "#"
+        },
+        {
+          "label": "Landing Page",
+          "link": "#"
+        },
+        {
+          "label": "Figma Files",
+          "link": "#"
+        },
+        {
+          "label": "Background Info",
+          "link": "#"
         }
       ]
     }

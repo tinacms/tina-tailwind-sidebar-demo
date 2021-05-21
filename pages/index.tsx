@@ -41,7 +41,11 @@ const App = ({ pageProps }: AppProps) => {
               }
             />
           </div>
-          {/* <Footer name={data.nav.wordmark.name} data={data.footer} /> */}
+          <Footer
+            name={nav?.wordmark?.name || ""}
+            footer={footer}
+            navList={navlist}
+          />
         </div>
       </Theme>
       {/* {showModal && (

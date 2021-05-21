@@ -2,8 +2,17 @@ import * as React from "react";
 import { ThemeContext } from "./theme";
 import { Blocks } from "./PageBlocks";
 import { FaInstagram, FaFacebookF, FaTwitter, FaGithub } from "react-icons/fa";
+import { Homepage_Footer_Data, Nav_Data } from "../.tina/__generated__/types";
 
-export const Footer = ({ data, name = "" }) => {
+export const Footer = ({
+  footer,
+  name = "",
+  navList,
+}: {
+  footer: Homepage_Footer_Data;
+  name: string;
+  navList: Nav_Data[];
+}) => {
   const theme = React.useContext(ThemeContext);
 
   return (
@@ -19,7 +28,13 @@ export const Footer = ({ data, name = "" }) => {
               </a>
             </div>
             <div className="flex-grow flex flex-wrap justify-between -mx-6">
-              <Blocks data={data.navlist} blocks={FOOTER_BLOCKS} />
+              {navList?.map((item) => {
+                switch (item.__typename) {
+                  case "Nav_Data":
+                    return <FooterNav {...item} />;
+                }
+              })}
+              {/* <Blocks data={data.navlist} blocks={FOOTER_BLOCKS} /> */}
             </div>
           </div>
         </div>
@@ -38,23 +53,31 @@ export const Footer = ({ data, name = "" }) => {
         <div className="bg-gray-800 dark:bg-gray-900 z-0 relative">
           <div className="container flex flex-col flex-wrap p-7 mx-auto sm:flex-row justify-center">
             <div className="flex justify-center">
-              {data.social.facebook && (
-                <a href={data.social.facebook} target="_blank" className="mx-2">
+              {footer?.social?.facebook && (
+                <a
+                  href={footer.social.facebook}
+                  target="_blank"
+                  className="mx-2"
+                >
                   <FaFacebookF
                     className={`h-6 w-auto text-white hover:text-${theme.color}-500`}
                   />
                 </a>
               )}
-              {data.social.twitter && (
-                <a href={data.social.twitter} target="_blank" className="mx-2">
+              {footer?.social?.twitter && (
+                <a
+                  href={footer.social.twitter}
+                  target="_blank"
+                  className="mx-2"
+                >
                   <FaTwitter
                     className={`h-6 w-auto text-white hover:text-${theme.color}-500`}
                   />
                 </a>
               )}
-              {data.social.instagram && (
+              {footer?.social?.instagram && (
                 <a
-                  href={data.social.instagram}
+                  href={footer.social.instagram}
                   target="_blank"
                   className="mx-2"
                 >
@@ -63,8 +86,8 @@ export const Footer = ({ data, name = "" }) => {
                   />
                 </a>
               )}
-              {data.social.github && (
-                <a href={data.social.github} target="_blank" className="mx-2">
+              {footer?.social?.github && (
+                <a href={footer.social.github} target="_blank" className="mx-2">
                   <FaGithub
                     className={`h-6 w-auto text-white hover:text-${theme.color}-500`}
                   />
@@ -78,7 +101,7 @@ export const Footer = ({ data, name = "" }) => {
   );
 };
 
-export const FooterNav = (data) => {
+export const FooterNav = (data: Nav_Data) => {
   const theme = React.useContext(ThemeContext);
 
   return (
@@ -97,10 +120,10 @@ export const FooterNav = (data) => {
             return (
               <li key={index}>
                 <a
-                  href={item.link}
+                  href={item?.link || ""}
                   className="text-sm text-gray-200 hover:text-white"
                 >
-                  {item.label}
+                  {item?.label || ""}
                 </a>
               </li>
             );
