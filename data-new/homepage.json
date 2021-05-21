@@ -35,9 +35,55 @@
       },
       "actions": [
         {
+          "label": "Test",
+          "type": "button"
+        },
+        {
           "label": "Change this",
           "type": "button",
           "icon": true
+        }
+      ]
+    },
+    {
+      "template": "testimonial",
+      "quote": "This is neat",
+      "author": "Somebuddy that I used to know",
+      "style": {
+        "color": "primary"
+      }
+    },
+    {
+      "template": "features",
+      "items": [
+        {
+          "icon": {
+            "color": "primary",
+            "name": "BiTestTube",
+            "style": "float"
+          },
+          "title": "Testing",
+          "text": "This is a test",
+          "actions": [
+            {
+              "label": "Thing one",
+              "type": "button"
+            },
+            {
+              "label": "Thing two",
+              "type": "button",
+              "icon": true
+            }
+          ]
+        },
+        {
+          "icon": {
+            "color": "blue",
+            "name": "BiMapAlt",
+            "style": "circle"
+          },
+          "title": "This is a test",
+          "text": "This is a test"
         }
       ]
     }

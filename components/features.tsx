@@ -1,9 +1,12 @@
 import { Icon, ICON_FIELDS } from "./icon";
 import { Actions, ACTION_FIELDS } from "./actions";
 import { Section, SectionFields } from "./section";
-import { Blocks } from "./blocks";
+import {
+  Features_Data,
+  Features_Items_Data,
+} from "../.tina/__generated__/types";
 
-export const Feature = (data) => {
+export const Feature = (data: Features_Items_Data) => {
   return (
     <div
       className="px-8 py-6 w-full xl:w-auto flex-grow xl:flex-shrink"
@@ -11,26 +14,28 @@ export const Feature = (data) => {
     >
       <div className="max-w-lg">
         <div className={`mb-6 w-auto inline-block`}>
-          <Icon icon={data.icon} />
+          <Icon icon={data?.icon} />
         </div>
         <h3 className="mb-4 transition duration-150 ease-out text-2xl font-semibold title-font">
-          {data.title}
+          {data?.title}
         </h3>
         <p className="mb-5 transition duration-150 ease-out text-base opacity-80 leading-relaxed">
-          {data.text}
+          {data?.text}
         </p>
-        <Actions actions={data.actions} />
+        <Actions actions={data?.actions} />
       </div>
     </div>
   );
 };
 
-export const Features = (data) => {
+export const Features = (props: Features_Data) => {
   return (
-    <Section variant={data?.style?.color || "blue"}>
+    <Section variant={props?.style?.color || "blue"}>
       <div className="container py-12 lg:py-24 mx-auto">
         <div className="flex flex-wrap text-left">
-          {/* <Blocks data={data.items} blocks={FEATURE_BLOCKS} /> */}
+          {props.items?.map((item, i) => {
+            return <Feature key={i} {...item} />;
+          })}
         </div>
       </div>
     </Section>

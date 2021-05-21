@@ -225,11 +225,19 @@ export type FeaturesItems_Icon_Data = {
   style?: Maybe<Scalars['String']>;
 };
 
+export type FeaturesItems_Actions_Data = {
+  __typename?: 'FeaturesItems_Actions_Data';
+  label?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  icon?: Maybe<Scalars['Boolean']>;
+};
+
 export type Features_Items_Data = {
   __typename?: 'Features_Items_Data';
   icon?: Maybe<FeaturesItems_Icon_Data>;
   title?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+  actions?: Maybe<Array<Maybe<FeaturesItems_Actions_Data>>>;
 };
 
 export type Features_Style_Data = {
@@ -361,11 +369,19 @@ export type FeaturesItems_Icon_Values = {
   style?: Maybe<Scalars['Reference']>;
 };
 
+export type FeaturesItems_Actions_Values = {
+  __typename?: 'FeaturesItems_Actions_Values';
+  label?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['Reference']>;
+  icon?: Maybe<Scalars['Boolean']>;
+};
+
 export type Features_Items_Values = {
   __typename?: 'Features_Items_Values';
   icon?: Maybe<FeaturesItems_Icon_Values>;
   title?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+  actions?: Maybe<Array<Maybe<FeaturesItems_Actions_Values>>>;
 };
 
 export type Features_Style_Values = {
@@ -567,7 +583,17 @@ export type FeaturesItems_Icon_GroupField = FormField & {
   fields?: Maybe<Array<Maybe<FeaturesItems_Icon_FormFieldsUnion>>>;
 };
 
-export type Features_Items_FormFieldsUnion = FeaturesItems_Icon_GroupField | TextField;
+export type FeaturesItems_Actions_FormFieldsUnion = TextField | SelectField | BooleanField;
+
+export type FeaturesItems_Actions_GroupListField = FormField & {
+  __typename?: 'FeaturesItems_Actions_GroupListField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<FeaturesItems_Actions_FormFieldsUnion>>>;
+};
+
+export type Features_Items_FormFieldsUnion = FeaturesItems_Icon_GroupField | TextField | FeaturesItems_Actions_GroupListField;
 
 export type Features_Items_GroupListField = FormField & {
   __typename?: 'Features_Items_GroupListField';
@@ -738,10 +764,17 @@ export type FeaturesItems_Icon_Input = {
   style?: Maybe<Scalars['String']>;
 };
 
+export type FeaturesItems_Actions_Input = {
+  label?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  icon?: Maybe<Scalars['Boolean']>;
+};
+
 export type Features_Items_Input = {
   icon?: Maybe<FeaturesItems_Icon_Input>;
   title?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+  actions?: Maybe<Array<Maybe<FeaturesItems_Actions_Input>>>;
 };
 
 export type Features_Style_Input = {

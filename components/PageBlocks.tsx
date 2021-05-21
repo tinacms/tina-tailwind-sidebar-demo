@@ -19,9 +19,6 @@ export const Blocks: React.FC<{
   blocksData: Homepage_Blocks_Data[];
   placeholder: JSX.Element;
 }> = ({ blocksData, placeholder }) => {
-  console.log({
-    blocksData,
-  });
   if (!blocksData || blocksData.length < 1) return placeholder;
   return (
     <>

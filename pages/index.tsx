@@ -1,15 +1,13 @@
 import * as React from "react";
 
-import { useCMS, withTina, useForm, usePlugin } from "tinacms";
 import { Hero, hero_template } from "../components/hero";
 import { Testimonial, testimonial_template } from "../components/testimonial";
-import { Blocks } from "../components/blocks";
+import { Blocks } from "../components/PageBlocks";
 import { Nav, NAV_FIELDS } from "../components/nav";
 import { Footer, FOOTER_FIELDS } from "../components/footer";
 import { Features, features_template } from "../components/features";
 import { TinaModal } from "../components/modal";
 import { Theme } from "../components/theme";
-import HomeData from "../data/home.json";
 import { createClient } from "../utils";
 import { Homepage_Doc_Data } from "../.tina/__generated__/types";
 
@@ -75,7 +73,8 @@ export default App;
 const client = createClient();
 
 export const query = `#graphql
- query ContentQuery {
+ query ContentQuery
+{
   getPageDocument(relativePath: "homepage.json") {
     id
     sys {
@@ -90,24 +89,43 @@ export const query = `#graphql
             label
             link
           }
-          __typename
-          ... on Homepage_Nav_Data {
-            wordmark {
-              ... on HomepageNav_Wordmark_Data {
-                icon {
-                  ... on NavWordmark_Icon_Data {
-                    color
-                    style
-                  }
-                }
-                name
-              }
+          wordmark {
+            icon {
+              color
+              name
             }
+            name
           }
         }
         blocks {
+          __typename ... on Features_Data {
+            items {
+              icon {
+                color
+                name
+                style
+              }
+              text
+              title
+              actions {
+                label
+                type
+                icon
+              }
+            }
+          }
+          __typename ... on Testimonial_Data {
+            quote
+            author
+            style {
+              color
+            }
+          }
           __typename
           ... on Hero_Data {
+            paragraph
+            headline
+            tagline
             text {
               color
             }
@@ -123,8 +141,9 @@ export const query = `#graphql
           }
         }
         navlist {
-          __typename ...on Nav_Data {
-            title 
+          __typename
+          ... on Nav_Data {
+            title
             items {
               label
               link
@@ -149,7 +168,6 @@ export const getStaticProps = async (ctx) => {
   const data = await client.request(query, {
     variables: {},
   });
-  console.log({ data });
   return {
     props: {
       pageProps: data,

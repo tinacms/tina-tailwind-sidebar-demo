@@ -68,6 +68,25 @@ fields:
       - name: text
         label: Text
         type: text
+      - label: Actions
+        name: actions
+        type: field_group_list
+        fields:
+          - label: Label
+            name: label
+            type: text
+          - name: type
+            label: Type
+            type: select
+            config:
+              source:
+                type: simple
+              options:
+                - button
+                - link
+          - label: Icon
+            name: icon
+            type: boolean
   - name: style
     label: Style
     type: field_group

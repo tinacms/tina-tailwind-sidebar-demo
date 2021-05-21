@@ -152,10 +152,17 @@ type FeaturesItems_Icon_Data {
   style: String
 }
 
+type FeaturesItems_Actions_Data {
+  label: String
+  type: String
+  icon: Boolean
+}
+
 type Features_Items_Data {
   icon: FeaturesItems_Icon_Data
   title: String
   text: String
+  actions: [FeaturesItems_Actions_Data]
 }
 
 type Features_Style_Data {
@@ -268,10 +275,17 @@ type FeaturesItems_Icon_Values {
   style: Reference
 }
 
+type FeaturesItems_Actions_Values {
+  label: String
+  type: Reference
+  icon: Boolean
+}
+
 type Features_Items_Values {
   icon: FeaturesItems_Icon_Values
   title: String
   text: String
+  actions: [FeaturesItems_Actions_Values]
 }
 
 type Features_Style_Values {
@@ -450,7 +464,16 @@ type FeaturesItems_Icon_GroupField implements FormField {
   fields: [FeaturesItems_Icon_FormFieldsUnion]
 }
 
-union Features_Items_FormFieldsUnion = FeaturesItems_Icon_GroupField | TextField
+union FeaturesItems_Actions_FormFieldsUnion = TextField | SelectField | BooleanField
+
+type FeaturesItems_Actions_GroupListField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [FeaturesItems_Actions_FormFieldsUnion]
+}
+
+union Features_Items_FormFieldsUnion = FeaturesItems_Icon_GroupField | TextField | FeaturesItems_Actions_GroupListField
 
 type Features_Items_GroupListField implements FormField {
   name: String
@@ -609,10 +632,17 @@ input FeaturesItems_Icon_Input {
   style: String
 }
 
+input FeaturesItems_Actions_Input {
+  label: String
+  type: String
+  icon: Boolean
+}
+
 input Features_Items_Input {
   icon: FeaturesItems_Icon_Input
   title: String
   text: String
+  actions: [FeaturesItems_Actions_Input]
 }
 
 input Features_Style_Input {

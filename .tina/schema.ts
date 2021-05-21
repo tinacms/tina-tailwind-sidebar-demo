@@ -310,6 +310,36 @@ export default defineSchema({
                           label: "Text",
                           type: "text",
                         },
+                        {
+                          label: "Actions",
+                          name: "actions",
+                          type: "group-list",
+                          // itemProps: (item) => ({
+                          //   label: item.label,
+                          // }),
+                          // defaultItem: () => ({
+                          //   label: "Action Label",
+                          //   type: "button",
+                          // }),
+                          fields: [
+                            {
+                              label: "Label",
+                              name: "label",
+                              type: "text",
+                            },
+                            {
+                              label: "Type",
+                              name: "type",
+                              type: "select",
+                              options: ["button", "link"],
+                            },
+                            {
+                              label: "Icon",
+                              name: "icon",
+                              type: "toggle",
+                            },
+                          ],
+                        },
                       ],
                     },
                     {

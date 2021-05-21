@@ -1,8 +1,9 @@
 import * as React from "react";
 import { ThemeContext } from "./theme";
 import { Section, SectionFields } from "./section";
+import { Testimonial_Data } from "../.tina/__generated__/types";
 
-export const Testimonial = (props) => {
+export const Testimonial = (props: Testimonial_Data) => {
   const theme = React.useContext(ThemeContext);
 
   return (

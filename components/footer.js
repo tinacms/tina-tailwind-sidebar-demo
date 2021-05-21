@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ThemeContext } from "./theme";
-import { Blocks } from "./blocks";
+import { Blocks } from "./PageBlocks";
 import { FaInstagram, FaFacebookF, FaTwitter, FaGithub } from "react-icons/fa";
 
 export const Footer = ({ data, name = "" }) => {
