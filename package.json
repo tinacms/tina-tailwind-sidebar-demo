@@ -15,7 +15,7 @@
   "dependencies": {
     "autoprefixer": "^10.2.5",
     "chroma-js": "^2.1.1",
-    "next": "^10.1.2",
+    "next": "^10.2.2",
     "postcss": "^8.2.9",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -23,7 +23,7 @@
     "react-tinacms-editor": "^0.41.0",
     "react-tinacms-inline": "^0.41.0",
     "styled-components": "^5.3.0",
-    "tina-graphql-gateway": "^0.2.11",
+    "tina-graphql-gateway": "0.2.11",
     "tinacms": "^0.41.0"
   },
   "devDependencies": {

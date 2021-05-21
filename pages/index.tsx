@@ -3,12 +3,12 @@ import * as React from "react";
 import { Hero, hero_template } from "../components/hero";
 import { Testimonial, testimonial_template } from "../components/testimonial";
 import { Blocks } from "../components/PageBlocks";
-import { Nav, NAV_FIELDS } from "../components/nav";
-import { Footer, FOOTER_FIELDS } from "../components/footer";
+import { Nav } from "../components/nav";
+import { Footer } from "../components/footer";
 import { Features, features_template } from "../components/features";
-import { TinaModal } from "../components/modal";
-import { createClient } from "../utils";
+import { createLocalClient } from "../utils";
 import { Homepage_Doc_Data } from "../.tina/__generated__/types";
+import { Theme } from "../components/theme";
 
 interface AppProps {
   pageProps: {
@@ -16,42 +16,38 @@ interface AppProps {
   };
 }
 const App = ({ pageProps }: AppProps) => {
-  console.log({
-    pageProps,
-  });
   const { blocks, nav, footer, navlist } = pageProps.getPageDocument.data;
-  console.log({
-    blocks,
-  });
   return (
     <div className="App">
-      <div className="min-h-screen flex flex-col">
-        <Nav nav={nav} />
-        <div className="flex-grow flex flex-col">
-          <Blocks
-            blocksData={blocks}
-            placeholder={
-              <div className="flex-grow flex items-center justify-center transition duration-150 ease-out text-gray-700 dark:text-gray-100 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 body-font overflow-hidden">
-                <p className="opacity-30">
-                  There's nothing here, try adding some page sections.
-                </p>
-              </div>
-            }
+      <Theme>
+        <div className="min-h-screen flex flex-col">
+          <Nav nav={nav} />
+          <div className="flex-grow flex flex-col">
+            <Blocks
+              blocksData={blocks}
+              placeholder={
+                <div className="flex-grow flex items-center justify-center transition duration-150 ease-out text-gray-700 dark:text-gray-100 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 body-font overflow-hidden">
+                  <p className="opacity-30">
+                    There's nothing here, try adding some page sections.
+                  </p>
+                </div>
+              }
+            />
+          </div>
+          <Footer
+            name={nav?.wordmark?.name || ""}
+            footer={footer}
+            navList={navlist}
           />
         </div>
-        <Footer
-          name={nav?.wordmark?.name || ""}
-          footer={footer}
-          navList={navlist}
-        />
-      </div>
+      </Theme>
       {/* {showModal && (
         <TinaModal
-          data={data}
-          close={() => {
-            setShowModal(false);
-          }}
-        /> */}
+        data={data}
+        close={() => {
+          setShowModal(false);
+        }}
+      /> */}
       {/* )} */}
     </div>
   );
@@ -71,7 +67,7 @@ const PAGE_BLOCK_TEMPLATES = {
 
 export default App;
 
-const client = createClient();
+const client = createLocalClient();
 
 export const query = `#graphql
  query ContentQuery

@@ -22,7 +22,7 @@ const TinaWrapper = (props) => {
 
   return (
     <TinaCloudAuthWall cms={cms}>
-      <Inner {...props} />
+      {props.query ? <Inner {...props} /> : props.children(props)}
     </TinaCloudAuthWall>
   );
 };
@@ -32,7 +32,8 @@ const Inner = (props) => {
     query: (gql) => gql(props.query),
     variables: props.variables || {},
   });
-  useDocumentCreatorPlugin();
+  console.log({ payload });
+  // useDocumentCreatorPlugin();
   return (
     <>
       {isLoading ? (

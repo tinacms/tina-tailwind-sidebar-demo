@@ -8,7 +8,6 @@ import { Homepage_Nav_Data, Maybe } from "../.tina/__generated__/types";
 
 export const Nav = ({ nav }: { nav?: Maybe<Homepage_Nav_Data> }) => {
   const theme = React.useContext(ThemeContext);
-  console.log({ nav });
 
   return (
     <Section>
