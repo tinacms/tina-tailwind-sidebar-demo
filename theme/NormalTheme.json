@@ -1,5 +1,5 @@
 {
-  "color": "teal",
-  "btnStyle": "square",
+  "color": "orange",
+  "btnStyle": "rounded",
   "_template": "theme"
 }
