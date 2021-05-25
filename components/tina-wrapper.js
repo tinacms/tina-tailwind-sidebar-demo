@@ -17,8 +17,6 @@ const TinaWrapper = (props) => {
       sidebar: true,
     });
   }, []);
-  /** Disables the TinaCMS "Media Manager" */
-
   return (
     <TinaCloudAuthWall cms={cms}>
       {props.query ? <Inner {...props} /> : props.children(props)}

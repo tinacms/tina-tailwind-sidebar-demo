@@ -28,10 +28,10 @@ export const Footer = ({
               </a>
             </div>
             <div className="flex-grow flex flex-wrap justify-between -mx-6">
-              {navList?.map((item) => {
+              {navList?.map((item, i) => {
                 switch (item.__typename) {
                   case "Nav_Data":
-                    return <FooterNav {...item} />;
+                    return <FooterNav key={i} {...item} />;
                 }
               })}
               {/* <Blocks data={data.navlist} blocks={FOOTER_BLOCKS} /> */}

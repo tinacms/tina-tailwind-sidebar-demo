@@ -7,14 +7,14 @@ export default defineSchema({
     {
       label: "Theme",
       name: "theme",
-      path: "theme",
+      path: "content/theme",
       format: "json",
       templates: [ThemeTemplate],
     },
     {
       label: "Pages",
       name: "page",
-      path: "data-new",
+      path: "content/data",
       format: "json",
       templates: [PageTemplate],
     },

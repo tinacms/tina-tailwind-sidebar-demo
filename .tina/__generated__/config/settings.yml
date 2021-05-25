@@ -2,7 +2,7 @@
 sections:
   - label: Theme
     name: theme
-    path: theme
+    path: content/theme
     format: json
     templates:
       - theme
@@ -12,7 +12,7 @@ sections:
     new_doc_ext: md
   - label: Pages
     name: page
-    path: data-new
+    path: content/data
     format: json
     templates:
       - homepage

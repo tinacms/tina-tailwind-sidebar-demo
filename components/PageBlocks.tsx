@@ -25,11 +25,11 @@ export const Blocks: React.FC<{
       {blocksData.map((block, i) => {
         switch (block.__typename) {
           case "Features_Data":
-            return <Features {...block} />;
+            return <Features key={i} {...block} />;
           case "Hero_Data":
-            return <Hero {...block} />;
+            return <Hero key={i} {...block} />;
           case "Testimonial_Data":
-            return <Testimonial {...block} />;
+            return <Testimonial key={i} {...block} />;
         }
       })}
     </>
