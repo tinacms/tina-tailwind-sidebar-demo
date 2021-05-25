@@ -23,7 +23,7 @@
     "react-tinacms-editor": "^0.41.0",
     "react-tinacms-inline": "^0.41.0",
     "styled-components": "^5.3.0",
-    "tina-graphql-gateway": "0.2.11",
+    "tina-graphql-gateway": "^0.2.11",
     "tinacms": "^0.41.0"
   },
   "devDependencies": {

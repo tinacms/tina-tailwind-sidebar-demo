@@ -47,15 +47,17 @@ type Section {
   documents: [Document]
 }
 
-union SectionDocumentUnion = Page_Document
+union SectionDocumentUnion = Theme_Document | Page_Document
 
 input SectionParams {
+  theme: Theme_Input
   page: Page_Input
 }
 
 type Mutation {
   addPendingDocument(relativePath: String, collection: String, template: String): Document
   updateDocument(relativePath: String, params: SectionParams): SectionDocumentUnion
+  updateThemeDocument(relativePath: String, params: Theme_Input): Theme_Document
   updatePageDocument(relativePath: String, params: Page_Input): Page_Document
 }
 
@@ -64,8 +66,68 @@ type Query {
   getDocument(collection: String, relativePath: String): SectionDocumentUnion
   getCollections: [Section]
   getCollection(collection: String): Section
+  getThemeDocument(relativePath: String): Theme_Document
+  getThemeList: [Theme_Document]
   getPageDocument(relativePath: String): Page_Document
   getPageList: [Page_Document]
+}
+
+union Theme_Data = Theme_Doc_Data
+
+input Theme_Input {
+  theme: Theme_Doc_Input
+}
+
+union Theme_Values = Theme_Doc_Values
+
+union Theme_Form = Theme_Doc_Form
+
+type Theme_Document implements Node & Document {
+  id: ID!
+  sys: SystemInfo
+  data: Theme_Data
+  values: Theme_Values
+  form: Theme_Form
+}
+
+type Theme_Doc_Data {
+  color: String
+  btnStyle: String
+  _body: String
+}
+
+type Theme_Doc_Values {
+  color: Reference
+  btnStyle: Reference
+  _body: String
+  _template: String
+}
+
+type SelectField implements FormField {
+  name: String
+  label: String
+  component: String
+  options: [String]
+}
+
+type TextareaField implements FormField {
+  name: String
+  label: String
+  component: String
+}
+
+union Theme_Doc_FormFieldsUnion = SelectField | TextareaField
+
+type Theme_Doc_Form {
+  label: String
+  name: String
+  fields: [Theme_Doc_FormFieldsUnion]
+}
+
+input Theme_Doc_Input {
+  color: String
+  btnStyle: String
+  _body: String
 }
 
 union Page_Data = Homepage_Doc_Data
@@ -333,13 +395,6 @@ type Homepage_Doc_Values {
   _template: String
 }
 
-type SelectField implements FormField {
-  name: String
-  label: String
-  component: String
-  options: [String]
-}
-
 union NavWordmark_Icon_FormFieldsUnion = SelectField
 
 type NavWordmark_Icon_GroupField implements FormField {
@@ -430,12 +485,6 @@ type Hero_Form {
   label: String
   name: String
   fields: [Hero_FormFieldsUnion]
-}
-
-type TextareaField implements FormField {
-  name: String
-  label: String
-  component: String
 }
 
 union Testimonial_Style_FormFieldsUnion = SelectField

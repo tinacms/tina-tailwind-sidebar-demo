@@ -17,7 +17,6 @@ const TinaWrapper = (props) => {
       sidebar: true,
     });
   }, []);
-
   /** Disables the TinaCMS "Media Manager" */
 
   return (
@@ -32,11 +31,14 @@ const Inner = (props) => {
     query: (gql) => gql(props.query),
     variables: props.variables || {},
   });
-  console.log({ payload });
+  const [payloadTheme, isLoadingTheme] = useGraphqlForms({
+    query: (gql) => gql(ThemeQuery),
+    variables: props.variables || {},
+  });
   // useDocumentCreatorPlugin();
   return (
     <>
-      {isLoading ? (
+      {isLoading || isLoadingTheme ? (
         <>
           <div>loading</div>
           <div
@@ -49,10 +51,24 @@ const Inner = (props) => {
         </>
       ) : (
         // pass the new edit state data to the child
-        props.children({ ...props, pageProps: payload })
+        props.children({ ...props, pageProps: payload, theme: payloadTheme })
       )}
     </>
   );
 };
+
+export const ThemeQuery = `#graphql
+query getTheme {
+  getThemeDocument(relativePath: "NormalTheme.json") {
+    id
+    data {
+      __typename ... on Theme_Doc_Data {
+        color
+        btnStyle
+      }
+    }
+  }
+}
+`;
 
 export default TinaWrapper;

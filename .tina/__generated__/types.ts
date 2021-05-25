@@ -65,9 +65,10 @@ export type Section = {
   documents?: Maybe<Array<Maybe<Document>>>;
 };
 
-export type SectionDocumentUnion = Page_Document;
+export type SectionDocumentUnion = Theme_Document | Page_Document;
 
 export type SectionParams = {
+  theme?: Maybe<Theme_Input>;
   page?: Maybe<Page_Input>;
 };
 
@@ -75,6 +76,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument?: Maybe<Document>;
   updateDocument?: Maybe<SectionDocumentUnion>;
+  updateThemeDocument?: Maybe<Theme_Document>;
   updatePageDocument?: Maybe<Page_Document>;
 };
 
@@ -92,6 +94,12 @@ export type MutationUpdateDocumentArgs = {
 };
 
 
+export type MutationUpdateThemeDocumentArgs = {
+  relativePath?: Maybe<Scalars['String']>;
+  params?: Maybe<Theme_Input>;
+};
+
+
 export type MutationUpdatePageDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
   params?: Maybe<Page_Input>;
@@ -103,6 +111,8 @@ export type Query = {
   getDocument?: Maybe<SectionDocumentUnion>;
   getCollections?: Maybe<Array<Maybe<Section>>>;
   getCollection?: Maybe<Section>;
+  getThemeDocument?: Maybe<Theme_Document>;
+  getThemeList?: Maybe<Array<Maybe<Theme_Document>>>;
   getPageDocument?: Maybe<Page_Document>;
   getPageList?: Maybe<Array<Maybe<Page_Document>>>;
 };
@@ -124,8 +134,77 @@ export type QueryGetCollectionArgs = {
 };
 
 
+export type QueryGetThemeDocumentArgs = {
+  relativePath?: Maybe<Scalars['String']>;
+};
+
+
 export type QueryGetPageDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
+};
+
+export type Theme_Data = Theme_Doc_Data;
+
+export type Theme_Input = {
+  theme?: Maybe<Theme_Doc_Input>;
+};
+
+export type Theme_Values = Theme_Doc_Values;
+
+export type Theme_Form = Theme_Doc_Form;
+
+export type Theme_Document = Node & Document & {
+  __typename?: 'Theme_Document';
+  id: Scalars['ID'];
+  sys?: Maybe<SystemInfo>;
+  data?: Maybe<Theme_Data>;
+  values?: Maybe<Theme_Values>;
+  form?: Maybe<Theme_Form>;
+};
+
+export type Theme_Doc_Data = {
+  __typename?: 'Theme_Doc_Data';
+  color?: Maybe<Scalars['String']>;
+  btnStyle?: Maybe<Scalars['String']>;
+  _body?: Maybe<Scalars['String']>;
+};
+
+export type Theme_Doc_Values = {
+  __typename?: 'Theme_Doc_Values';
+  color?: Maybe<Scalars['Reference']>;
+  btnStyle?: Maybe<Scalars['Reference']>;
+  _body?: Maybe<Scalars['String']>;
+  _template?: Maybe<Scalars['String']>;
+};
+
+export type SelectField = FormField & {
+  __typename?: 'SelectField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+  options?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type TextareaField = FormField & {
+  __typename?: 'TextareaField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+};
+
+export type Theme_Doc_FormFieldsUnion = SelectField | TextareaField;
+
+export type Theme_Doc_Form = {
+  __typename?: 'Theme_Doc_Form';
+  label?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<Theme_Doc_FormFieldsUnion>>>;
+};
+
+export type Theme_Doc_Input = {
+  color?: Maybe<Scalars['String']>;
+  btnStyle?: Maybe<Scalars['String']>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Page_Data = Homepage_Doc_Data;
@@ -436,14 +515,6 @@ export type Homepage_Doc_Values = {
   _template?: Maybe<Scalars['String']>;
 };
 
-export type SelectField = FormField & {
-  __typename?: 'SelectField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
-  options?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
 export type NavWordmark_Icon_FormFieldsUnion = SelectField;
 
 export type NavWordmark_Icon_GroupField = FormField & {
@@ -545,13 +616,6 @@ export type Hero_Form = {
   label?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   fields?: Maybe<Array<Maybe<Hero_FormFieldsUnion>>>;
-};
-
-export type TextareaField = FormField & {
-  __typename?: 'TextareaField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
 };
 
 export type Testimonial_Style_FormFieldsUnion = SelectField;

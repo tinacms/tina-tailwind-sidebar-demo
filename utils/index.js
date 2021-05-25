@@ -26,7 +26,7 @@ export const createCloudClient = () => {
   return new Client({
     organizationId: organization,
     clientId,
-    branch: "feat/tina-cloud",
+    branch: "tina-cloud",
     tokenStorage: "LOCAL_STORAGE",
   });
 };

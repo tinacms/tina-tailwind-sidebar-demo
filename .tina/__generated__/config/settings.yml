@@ -1,5 +1,15 @@
 ---
 sections:
+  - label: Theme
+    name: theme
+    path: theme
+    format: json
+    templates:
+      - theme
+    type: directory
+    create: documents
+    match: '**/*.md'
+    new_doc_ext: md
   - label: Pages
     name: page
     path: data-new

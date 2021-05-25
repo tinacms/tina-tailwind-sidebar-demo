@@ -4,7 +4,6 @@ import { BiRightArrowAlt } from "react-icons/bi";
 
 export const Actions = ({ actions }) => {
   const theme = React.useContext(ThemeContext);
-
   return (
     <div className="w-full">
       <div className="flex flex-wrap items-center -mx-3 -my-2">
@@ -16,9 +15,9 @@ export const Actions = ({ actions }) => {
                 <button
                   key={index}
                   className={`z-10 relative flex items-center px-7 py-3 mx-3 my-2 font-semibold text-lg transition duration-150 ease-out text-white transition duration-500 ease-in-out ${
-                    theme.button.style === "rounded" && `rounded-lg`
+                    theme?.btnStyle === "rounded" && `rounded-lg`
                   } ${
-                    theme.button.style === "round" && `rounded-full`
+                    theme?.btnStyle === "round" && `rounded-full`
                   } transform bg-${theme.color}-500 hover:bg-${
                     theme.color
                   }-600 bg-gradient-to-r from-${theme.color}-400 to-${

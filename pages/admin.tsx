@@ -6,7 +6,7 @@ const Admin = () => {
   const router = useRouter();
   useEffect(() => {
     setEdit(true);
-    router.push("/");
+    router.back();
   }, []);
   return <div>Going into edit mode...</div>;
 };

@@ -7,19 +7,26 @@ import { Nav } from "../components/nav";
 import { Footer } from "../components/footer";
 import { Features, features_template } from "../components/features";
 import { createLocalClient } from "../utils";
-import { Homepage_Doc_Data } from "../.tina/__generated__/types";
+import {
+  Homepage_Doc_Data,
+  Theme_Document,
+} from "../.tina/__generated__/types";
 import { Theme } from "../components/theme";
+import { ThemeQuery } from "../components/tina-wrapper";
 
 interface AppProps {
   pageProps: {
     getPageDocument: { data: Homepage_Doc_Data };
   };
+  theme: {
+    getThemeDocument: Theme_Document;
+  };
 }
-const App = ({ pageProps }: AppProps) => {
+const App = ({ pageProps, theme }: AppProps) => {
   const { blocks, nav, footer, navlist } = pageProps.getPageDocument.data;
   return (
     <div className="App">
-      <Theme>
+      <Theme theme={theme}>
         <div className="min-h-screen flex flex-col">
           <Nav nav={nav} />
           <div className="flex-grow flex flex-col">
@@ -165,9 +172,13 @@ export const getStaticProps = async (ctx) => {
   const data = await client.request(query, {
     variables: {},
   });
+  const theme = await client.request(ThemeQuery, {
+    variables: {},
+  });
   return {
     props: {
       pageProps: data,
+      theme,
       query,
       variables: {},
     },

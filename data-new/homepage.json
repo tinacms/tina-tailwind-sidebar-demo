@@ -3,14 +3,14 @@
     "wordmark": {
       "icon": {
         "color": "primary",
-        "name": "FiAperture",
+        "name": "BiUserCircle",
         "style": "float"
       },
-      "name": "Company Name"
+      "name": "WORDMARK"
     },
     "items": [
       {
-        "label": "Pricing"
+        "label": "Testing 1 2 3"
       },
       {
         "label": "Contact"
@@ -41,8 +41,7 @@
         },
         {
           "label": "Learn More",
-          "type": "link",
-          "icon": false
+          "type": "link"
         }
       ],
       "style": {
@@ -174,5 +173,13 @@
       ]
     }
   ],
+  "footer": {
+    "social": {
+      "facebook": "jkl",
+      "twitter": "jl",
+      "instagram": "jkl.",
+      "github": "jkl."
+    }
+  },
   "_template": "homepage"
 }
