@@ -10,7 +10,7 @@ export const Testimonial = (props) => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="relative">
           <blockquote>
-            <div className="relative z-10 max-w-3xl mx-auto text-4xl lg:text-5xl font-extrabold tracking-normal text-center title-font text-white">
+            <div className={`relative z-10 max-w-3xl mx-auto text-4xl lg:text-5xl font-extrabold tracking-normal text-center title-font ${props.style.color === "primary" ? `text-white` : ``}`}>
               <span
                 className={`block opacity-20 text-black text-${theme.color}-700 text-8xl absolute inset-y-1/2 transform translate-y-2	-left-4 leading-4 -z-1`}
               >
